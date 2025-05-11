@@ -34,7 +34,8 @@ booleanUnary    = `!` BOOLEAN
                 | `!` booleanUnary
                 | `!` '(' booleanExpr ')'
 
-booleanBinary   = numericExpr ( `<` | `<=` | `>` | `>=` ) numericExpr
+booleanBinary   = booleanExpr ( `&&` | `||` ) booleanExpr
+                | numericExpr ( `<` | `<=` | `>` | `>=` ) numericExpr
                 | stringExpr ( `<` | `<=` | `>` | `>=` ) stringExpr
                 | expr ( `==` | `!=` ) expr
 
