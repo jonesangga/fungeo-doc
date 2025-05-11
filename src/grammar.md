@@ -1,11 +1,19 @@
 # Grammar
 
+## Syntax Grammar
+
 ```
 program         = statement* EOF
 
 statement       = assignment
                 | call
+                | ifStmt
+                | block
                 | `;`
+
+block           = `{` statement* `}`
+
+ifStmt          = `if` booleanExpr statement ( `else` statement )?
 
 call            = FNNAME args
 
@@ -46,8 +54,11 @@ stringExpr      = STRING
                 | '(' stringExpr ')'
 
 stringBinary    = stringExpr `++` stringExpr
+```
 
+## Lexical Grammar
 
+```
 BOOLEAN         = `true`
                 | `false`
                 | <name with boolean type>
@@ -57,4 +68,6 @@ NUMBER          = [0-9]+ ( `.` [0-9]+ )?
 
 STRING          = `"` <any printable character>* `"`
                 | <name with string type>
+
+FNNAME          = <uppercase letter> [a-z0-9_]*
 ```
